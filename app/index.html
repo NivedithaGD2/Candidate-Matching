@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Resume Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" id="theme-style">
+    <style>
+        /* Define your dark theme styles here */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        /* Centered logo container */
+        .logo-container {
+            position: relative;
+            margin: 20px auto; /* Adjust the margin to center the logo */
+            max-width: 200px; /* Adjust the max-width of the logo */
+            text-align: center;
+        }
+
+        /* Logo */
+        #logo {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Navigation menu styles */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li:first-child {
+            margin-right: 20px; /* Adjust the margin for the first link */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Ranked resumes table styles */
+        .ranked-resumes-table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .ranked-resumes-table th,
+        .ranked-resumes-table td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .ranked-resumes-table th {
+            background-color: #333;
+        }
+
+        /* Download link styles */
+        .download-link {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .download-link:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="logo-container">
+        <img id="logo" src="{{ url_for('static', filename='2.png') }}" alt="Company Logo">
+    </div>
+
+    <!-- Navigation menu -->
+    <nav>
+        <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/">Home</a></li>
+        </ul>
+    </nav>
+
+    <!-- Resume analysis form -->
+    <div class="resume-analysis-form">
+        <form action="/" method="post" enctype="multipart/form-data">
+            <label for="job_description">Job Description:</label>
+            <textarea name="job_description" rows="4" cols="50" required></textarea>
+            <br>
+            <label for="resume_files">Upload Resumes (PDF):</label>
+            <input type="file" name="resume_files" accept=".pdf" multiple required>
+            <br>
+            <input type="submit" value="Analyze Resumes">
+        </form>
+    </div>
+
+    <!-- Ranked resumes table -->
+    {% if results %}
+<table class="ranked-resumes-table">
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Email</th>
+            <th>Similarity in %</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result in results %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ result[1][0] }}</td>
+            <td>{{ "{:.2f}".format(result[2]) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+</body>
+
+</html>

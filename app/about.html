@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>About - Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" id="theme-style">
+    <style>
+        /* Define your dark theme styles here */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        /* Centered logo container */
+        .logo-container {
+            position: relative;
+            margin: 20px auto; /* Adjust the margin to center the logo */
+            max-width: 150px; /* Adjust the max-width of the logo */
+            text-align: center;
+        }
+
+        /* Logo */
+        #logo {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Navigation menu styles */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li:first-child {
+            margin-right: 20px; /* Adjust the margin for the first link */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Main content styles */
+        .main-content {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left; /* Align text to the left */
+        }
+
+        .main-content h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .main-content p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.9em;
+            color: #555;
+            text-align: right;
+        }
+
+        footer p {
+            font-weight: bold;
+            margin: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="logo-container">
+        <img id="logo" src="{{ url_for('static', filename='2.png') }}" alt="Company Logo">
+    </div>
+
+    <!-- Navigation menu -->
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li> <!-- Home link -->
+            <li><a href="/resume-ranking">Resume Analyzer</a></li> <!-- Resume Analyzer link -->
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <h2>About  Analyzer</h2>
+        <p>Welcome to Resume Analyzer, a sophisticated tool designed to help you rank resumes based on their relevance to a given job description. By leveraging advanced techniques such as cosine similarity and TF-IDF (Term Frequency-Inverse Document Frequency), our tool provides an accurate and efficient way to evaluate and compare resumes.</p>
+        <p>Simply upload the resumes and provide the job description, and our system will analyze the documents to rank them based on their similarity to the job requirements. This makes the hiring process more streamlined and helps you find the most suitable candidates quickly.</p>
+    </div>
+
+    <footer>
+        <p>NIVEDITHA GD</p>
+        
+    </footer>
+</body>
+
+</html>
